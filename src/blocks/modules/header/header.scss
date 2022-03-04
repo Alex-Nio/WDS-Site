@@ -4,29 +4,28 @@
 
 .header {
     overflow: hidden;
-    &__nav {
-        @include fdrjsb_aic;
-        padding: 40px 0;
-        transition: padding-top 0.8s linear, padding-bottom 0.5s linear;
-        background: linear-gradient(90deg, rgba(18, 22, 25, 1) 0%, rgba(18, 22, 25, 1) 50%, rgba(18, 22, 25, 1) 100%);
-        
-        &.on-scroll {
-            position: fixed;
-            z-index: 98;
-            top: 0;
-            right: 0;
-            left: 0;
-            padding: 20px 15px;
-            transition: padding-top 0.8s linear, padding-bottom 0.5s linear;
-            animation: fadeIn 0.8s linear;
-            background: linear-gradient(90deg, rgba(18, 22, 25, 1) 0%, rgba(18, 22, 25, 1) 50%, rgba(18, 22, 25, 1) 100%);
-        }
-    }
 }
 
 //? Меню
 
-.nav {
+.header-nav {
+    @include fdrjsb_aic;
+    padding: 20px 15px;
+    transition: padding-top 0.3s linear, padding-bottom 0.3s linear;
+    background: linear-gradient(90deg, rgba(18, 22, 25, 1) 0%, rgba(18, 22, 25, 1) 50%, rgba(18, 22, 25, 1) 100%);
+        
+    &.on-scroll {
+        position: fixed;
+        z-index: 98;
+        top: 0;
+        right: 0;
+        left: 0;
+        padding: 30px 15px;
+        transition: padding-top 0.3s linear;
+        // animation: fadeIn 0.8s linear;
+        background: linear-gradient(90deg, rgba(18, 22, 25, 1) 0%, rgba(18, 22, 25, 1) 50%, rgba(18, 22, 25, 1) 100%);
+    }
+
     &__left {
         @include fdr;
         margin-left: 10px;
@@ -55,7 +54,7 @@
 
         & > span {
             font-family: $ff_PNl;
-            font-size: 1.2rem;
+            font-size: 1.125rem;
             text-transform: uppercase;
             margin-left: 16px;
             padding-bottom: 2px;
@@ -73,7 +72,7 @@
 
 .main-nav {
     font-family: $ff_MPr;
-    font-size: 1.2rem;
+    font-size: 1.125rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 400;
@@ -82,39 +81,14 @@
     &__list {
         @include fdr;
     }
-}
 
-.list-item {
-    &:first-child {
-        margin-right: 35px;
-    }
-
-    &:not(:first-child) {
-        margin: 0 35px;
-    }
-}
-
-// ? Родитель слайдера
-
-.slider__content {
-    @include fdrjc_aic;
-    position: relative;
-    
-    margin-top: 180px;
-    margin-bottom: 85px;
-    animation: fadeIn 1s linear;
-
-    & :first-child {
-        & > a {
-            display: flex;
-            width: max-content;
+    &__list-item {
+        &:first-child {
+            margin-right: 35px;
         }
-    }
-
-    & :last-child {
-        & > a {
-            display: flex;
-            width: max-content;
+    
+        &:not(:first-child) {
+            margin: 0 35px;
         }
     }
 }
@@ -123,7 +97,29 @@
 
 .header-slider {
     width: 100%;
-    // overflow: hidden;
+    
+    &__content {
+        @include fdrjc_aic;
+        position: relative;
+        
+        margin-top: 180px;
+        margin-bottom: 85px;
+        animation: fadeIn 1s linear;
+    
+        & :first-child {
+            & > a {
+                display: flex;
+                width: max-content;
+            }
+        }
+    
+        & :last-child {
+            & > a {
+                display: flex;
+                width: max-content;
+            }
+        }
+    }
 }
 
 .swiper-slide {
@@ -195,7 +191,7 @@
 
 //? Якорные ссылки
 
-.content__ancor {
+.content-ancor {
     font-family: $ff_MPr;
     text-transform: uppercase;
     font-size: 1rem;
@@ -211,7 +207,7 @@
 
 //? Наши проекты
 
-.project-ancor {
+.projects-ancor {
     @include col();
     position: absolute;
     top: 50%;

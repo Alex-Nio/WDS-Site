@@ -198,8 +198,44 @@ $(function () {
     }, 'xml');
   });
 }); // -----------------------------------------------
+// -----------HEADER NAV SCROLL-------------------
+// -----------------------------------------------
+
+var header = document.querySelector(".header"),
+    nav = document.querySelector(".header-nav"),
+    sidebarContent = document.querySelector(".social-bar__list"),
+    hHeight;
+
+function onScroll() {
+  window.addEventListener("scroll", callbackFunc);
+
+  function callbackFunc() {
+    var y = window.pageYOffset;
+
+    if (y > 0) {
+      // sidebarContent.style.cssText = `
+      // animation: fadeIn 0.8s linear;
+      // margin-top: 13px;
+      // transition: margin-top 0.8s linear;
+      // `;
+      nav.classList.add("on-scroll");
+      header.style.cssText = "\n      margin-top: 40px;\n      transition: margin-top 0.1s linear";
+    } else {
+      nav.classList.remove("on-scroll");
+      header.style.cssText = "\n      margin-top: 0px;"; // sidebarContent.style.cssText = `
+      // margin-top: 35px;
+      // transition: margin-top 0.8s linear;
+      // `;
+    }
+  }
+}
+
+window.onload = function () {
+  onScroll();
+}; // -----------------------------------------------
 // ---------------HEADER SLIDER-------------------
 // -----------------------------------------------
+
 
 var swiper = new Swiper('.header-slider', {
   // Optional parameters
@@ -226,40 +262,8 @@ var swiper = new Swiper('.header-slider', {
     prevEl: '.action-elipse-prev'
   }
 }); // -----------------------------------------------
-// -----------HEADER NAV SCROLL-------------------
-// -----------------------------------------------
-
-(function () {
-  'use strict';
-
-  var m = document.querySelector(".header__content"),
-      h = document.querySelector(".header__nav"),
-      sidebarContent = document.querySelector(".social-bar__list"),
-      hHeight;
-
-  function onScroll() {
-    window.addEventListener("scroll", callbackFunc, 200);
-
-    function callbackFunc() {
-      var y = window.pageYOffset;
-
-      if (y > 50) {
-        sidebarContent.style.cssText = "\n        animation: fadeIn 0.8s linear;\n        margin-top: 13px;\n        transition: margin-top 0.8s linear;\n        ";
-        h.classList.add("on-scroll");
-      } else {
-        h.classList.remove("on-scroll");
-        sidebarContent.style.cssText = "\n        margin-top: 35px;\n        transition: margin-top 0.8s linear;\n        ";
-      }
-    }
-  }
-
-  window.onload = function () {
-    onScroll();
-  };
-})(); // -----------------------------------------------
 // -----------CIRCLE MAGIC ROTATION---------------
 // -----------------------------------------------
-
 
 var circleBtns = document.querySelectorAll('.circle-btn'),
     circleParent = document.querySelector('.circle-parent'),
@@ -267,12 +271,7 @@ var circleBtns = document.querySelectorAll('.circle-btn'),
 circleBtns.forEach(function (btn, i) {
   btn.addEventListener('click', function (e) {
     hideTabContent();
-    setActiveDescr(i); // if (circleParent.getAttribute('style')) {
-    //   circleParent.style.removeProperty('transform');
-    //   circleParent.style.removeProperty('transition-duration');
-    // } else {
-    //   setCircleAnimation();
-    // }
+    setActiveDescr(i);
   });
 });
 

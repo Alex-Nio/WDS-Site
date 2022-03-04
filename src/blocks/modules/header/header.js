@@ -2,96 +2,97 @@
 // -------------SVG FILL SCRIPT-------------------
 // -----------------------------------------------
 
-$(function() {
-  $('img.img-svg').each(function(){
-      var $img = $(this);
-      var imgClass = $img.attr('class');
-      var imgURL = $img.attr('src');
-      $.get(imgURL, function(data) {
+$(function () {
+  $('img.img-svg').each(function () {
+    var $img = $(this);
+    var imgClass = $img.attr('class');
+    var imgURL = $img.attr('src');
+    $.get(imgURL, function (data) {
       var $svg = $(data).find('svg');
-      if(typeof imgClass !== 'undefined') {
-          $svg = $svg.attr('class', imgClass+' replaced-svg');
+      if (typeof imgClass !== 'undefined') {
+        $svg = $svg.attr('class', imgClass + ' replaced-svg');
       }
       $svg = $svg.removeAttr('xmlns:a');
-      if(!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
-          $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
+      if (!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
+        $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
       }
       $img.replaceWith($svg);
-      }, 'xml');
+    }, 'xml');
   });
 });
+
+
+// -----------------------------------------------
+// -----------HEADER NAV SCROLL-------------------
+// -----------------------------------------------
+
+let header = document.querySelector(".header"),
+  nav = document.querySelector(".header-nav"),
+  sidebarContent = document.querySelector(".social-bar__list"),
+  hHeight;
+
+function onScroll() {
+
+  window.addEventListener("scroll", callbackFunc);
+
+  function callbackFunc() {
+    var y = window.pageYOffset;
+    if (y > 0) {
+      // sidebarContent.style.cssText = `
+      // animation: fadeIn 0.8s linear;
+      // margin-top: 13px;
+      // transition: margin-top 0.8s linear;
+      // `;
+      nav.classList.add("on-scroll");
+      header.style.cssText = `
+      margin-top: 40px;
+      transition: margin-top 0.1s linear`;
+    } else {
+      nav.classList.remove("on-scroll");
+      header.style.cssText = `
+      margin-top: 0px;`;
+      // sidebarContent.style.cssText = `
+      // margin-top: 35px;
+      // transition: margin-top 0.8s linear;
+      // `;
+    }
+  }
+}
+
+window.onload = function () {
+  onScroll();
+};
 
 // -----------------------------------------------
 // ---------------HEADER SLIDER-------------------
 // -----------------------------------------------
 
 const swiper = new Swiper('.header-slider', {
-    // Optional parameters
-    direction: 'horizontal',
-    grabCursor: true,
-    slidesPerView: 1,
-    speed: 1050,
-    // loop: true,
-    // autoplay: true,
-    effect: "cube",
-    cubeEffect: {
-        shadow: false,
-        slideShadows: false,
-        shadowOffset: 20,
-        shadowScale: 0.8,
-      },
-    // If we need pagination
-    pagination: {
-      el: '.custom-pagination',
-    },
-  
-    // Navigation arrows
-    navigation: {
-      nextEl: '.action-elipse-next',
-      prevEl: '.action-elipse-prev',
-    }
-  });
-  
-// -----------------------------------------------
-// -----------HEADER NAV SCROLL-------------------
-// -----------------------------------------------
+  // Optional parameters
+  direction: 'horizontal',
+  grabCursor: true,
+  slidesPerView: 1,
+  speed: 1050,
+  // loop: true,
+  // autoplay: true,
+  effect: "cube",
+  cubeEffect: {
+    shadow: false,
+    slideShadows: false,
+    shadowOffset: 20,
+    shadowScale: 0.8,
+  },
+  // If we need pagination
+  pagination: {
+    el: '.custom-pagination',
+  },
 
-(function() {
-
-  'use strict';
-
-  var m = document.querySelector(".header__content"),
-    h = document.querySelector(".header__nav"),
-    sidebarContent = document.querySelector(".social-bar__list"),
-    hHeight;
-
-  function onScroll() {
-
-    window.addEventListener("scroll", callbackFunc, 200);
-
-    function callbackFunc() {
-      var y = window.pageYOffset;
-      if (y > 50) {
-        sidebarContent.style.cssText = `
-        animation: fadeIn 0.8s linear;
-        margin-top: 13px;
-        transition: margin-top 0.8s linear;
-        `;
-        h.classList.add("on-scroll");
-      } else {
-        h.classList.remove("on-scroll");
-        sidebarContent.style.cssText = `
-        margin-top: 35px;
-        transition: margin-top 0.8s linear;
-        `;
-      }
-    }
+  // Navigation arrows
+  navigation: {
+    nextEl: '.action-elipse-next',
+    prevEl: '.action-elipse-prev',
   }
-
-  window.onload = function() {
-    onScroll();
-  };
-})();
+});
 
 // -----------------------------------------------
 // -----------CIRCLE MAGIC ROTATION---------------
@@ -99,24 +100,14 @@ const swiper = new Swiper('.header-slider', {
 
 
 let circleBtns = document.querySelectorAll('.circle-btn'),
-    circleParent = document.querySelector('.circle-parent'),
-    descrps = document.querySelectorAll('.descr-block');
+  circleParent = document.querySelector('.circle-parent'),
+  descrps = document.querySelectorAll('.descr-block');
 
 circleBtns.forEach((btn, i) => {
-  btn.addEventListener('click', function(e) {
+  btn.addEventListener('click', function (e) {
     hideTabContent();
     setActiveDescr(i);
-
-    // if (circleParent.getAttribute('style')) {
-    //   circleParent.style.removeProperty('transform');
-    //   circleParent.style.removeProperty('transition-duration');
-    // } else {
-    //   setCircleAnimation();
-    // }
   });
-
-  
-  
 });
 
 
@@ -126,7 +117,7 @@ function setActiveBtn(i) {
 }
 
 function setActiveDescr(i) {
-  descrps[i].classList.add('active');  
+  descrps[i].classList.add('active');
 }
 
 function hideTabContent() {
@@ -135,11 +126,11 @@ function hideTabContent() {
   });
 
   circleBtns.forEach(btn => {
-      btn.classList.remove('active');
+    btn.classList.remove('active');
   });
 }
 
-circleParent.addEventListener('click', function(e){
+circleParent.addEventListener('click', function (e) {
   activeClassReset();
 
   let target = e.target;
@@ -179,8 +170,8 @@ function targetSetActiveClass(target) {
 // Выводим новую центральную иконку
 function setActiveIcon(target) {
   let activeBtn = document.querySelector('.circle-btn.active'),
-      activeBtnIcon = activeBtn.querySelector('i').classList.value,
-      parentCenteredIcon = circleParent.querySelector("[data-element]");
+    activeBtnIcon = activeBtn.querySelector('i').classList.value,
+    parentCenteredIcon = circleParent.querySelector("[data-element]");
 
   parentCenteredIcon.classList.value = activeBtnIcon;
 }
