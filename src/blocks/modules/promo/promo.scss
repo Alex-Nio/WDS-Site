@@ -1,0 +1,35 @@
+.promo {
+    &__content {
+        @include col();
+        @include size(11);
+        @include fdcjc_aic;
+        margin: 0 auto;
+    }
+}
+
+.promo-btn {
+    display: inline-block;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: linear-gradient(54deg, rgba(213, 83, 111, 1) 0%, rgba(94, 0, 202, 1) 100%);
+    margin: 165px auto 100px auto;
+    & > i {
+        color: $white;
+    }
+}
+    
+.title {
+    font-family: $ff_PDr;
+    color: $white;
+    text-align: center;
+    font-size: 70px;
+}
+
+.assign-decor {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 55px;
+    margin-bottom: 80px;
+}

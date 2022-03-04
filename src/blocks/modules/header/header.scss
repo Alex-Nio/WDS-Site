@@ -1,0 +1,509 @@
+// -----------------------------------------------
+// ------------------HEADER-----------------------
+// -----------------------------------------------
+
+.header {
+    overflow: hidden;
+    &__nav {
+        @include fdrjsb_aic;
+        padding: 40px 0;
+        transition: padding-top 0.8s linear, padding-bottom 0.5s linear;
+        background: linear-gradient(90deg, rgba(18, 22, 25, 1) 0%, rgba(18, 22, 25, 1) 50%, rgba(18, 22, 25, 1) 100%);
+        
+        &.on-scroll {
+            position: fixed;
+            z-index: 98;
+            top: 0;
+            right: 0;
+            left: 0;
+            padding: 20px 15px;
+            transition: padding-top 0.8s linear, padding-bottom 0.5s linear;
+            animation: fadeIn 0.8s linear;
+            background: linear-gradient(90deg, rgba(18, 22, 25, 1) 0%, rgba(18, 22, 25, 1) 50%, rgba(18, 22, 25, 1) 100%);
+        }
+    }
+}
+
+//? Меню
+
+.nav {
+    &__left {
+        @include fdr;
+        margin-left: 10px;
+    }
+
+    &__right {
+        @include fdr;
+        margin-right: 100px;
+    }
+}
+
+.header-logo {
+    margin: 0 10px;
+    padding: 0 5px;
+}
+
+.phone {
+    @include fdrjc_aic;
+    color: $navlink_col;
+    margin-left: 30px;
+    padding-left: 10px;
+
+    & > a {
+        display: inline-flex;
+        align-items: center;
+
+        & > span {
+            font-family: $ff_PNl;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            margin-left: 16px;
+            padding-bottom: 2px;
+        }
+    }
+}
+
+.phone-icon {
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    background: url("../../../img/svg/phone-icon.svg") no-repeat center;
+    background-size: contain;
+}
+
+.main-nav {
+    font-family: $ff_MPr;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 400;
+    color: $navlink_col;
+
+    &__list {
+        @include fdr;
+    }
+}
+
+.list-item {
+    &:first-child {
+        margin-right: 35px;
+    }
+
+    &:not(:first-child) {
+        margin: 0 35px;
+    }
+}
+
+// ? Родитель слайдера
+
+.slider__content {
+    @include fdrjc_aic;
+    position: relative;
+    
+    margin-top: 180px;
+    margin-bottom: 85px;
+    animation: fadeIn 1s linear;
+
+    & :first-child {
+        & > a {
+            display: flex;
+            width: max-content;
+        }
+    }
+
+    & :last-child {
+        & > a {
+            display: flex;
+            width: max-content;
+        }
+    }
+}
+
+//? Слайдер
+
+.header-slider {
+    width: 100%;
+    // overflow: hidden;
+}
+
+.swiper-slide {
+    width: 100%;
+    // overflow: hidden;
+}
+
+.slide-content {
+    @include fdrjc_aic;
+    padding-top: 180px;
+    padding-bottom: 85px;
+}
+
+//? Пагинация слайдера
+
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 12px;
+}
+
+.custom-pagination {
+    & .swiper-pagination-bullet {
+        width: 6px;
+        height: 6px;
+        background: #48555d;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ed751b;
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+            transition: transform 0.5s ease-in-out;
+        }
+    }
+
+    & .swiper-pagination-bullet-active {
+        position: relative;
+        width: 6px;
+        height: 6px;
+        background: #ed751b;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #ed751b;
+            transform: translate(-52%, -51%) scale(1);
+            transition: transform 0.5s ease-in-out;
+            border-radius: 50%;
+        }
+    }
+}
+
+//? Большой логотип
+
+.logo-big {
+    @include col();
+    @include size(8);
+    @include fdrjc_aic;
+    position: relative;
+}
+
+//? Якорные ссылки
+
+.content__ancor {
+    font-family: $ff_MPr;
+    text-transform: uppercase;
+    font-size: 1rem;
+    width: max-content;
+    color: #31383e;
+    transition: color 0.3s linear;
+
+    &:hover {
+        color: #5e00ca;
+        transition: color 0.3s linear;
+    }
+}
+
+//? Наши проекты
+
+.project-ancor {
+    @include col();
+    position: absolute;
+    top: 50%;
+    right: calc(100% - 90px);
+    transform: translateY(-50%) rotate(-90deg) scale(1);
+    transition: all 0.5s linear;
+
+    &:hover {
+        transform: translateY(-50%) rotate(-90deg) scale(1.2);
+        transition: transform 0.5s linear;
+    }
+}
+
+//? О Компании
+
+.company-ancor {
+    @include col();
+    position: absolute;
+    top: 50%;
+    left: calc(100% - 80px);
+    transform: translateY(-50%) rotate(90deg) scale(1);
+    transition: all 0.5s linear;
+
+    &:hover {
+        transform: translateY(-50%) rotate(90deg) scale(1.2);
+        transition: transform 0.5s linear;
+    }
+}
+
+//? Линия разделитель
+
+.devider-line {
+    @include col();
+    @include size(2.2);
+    display: flex;
+    position: absolute;
+    right: calc(100% - 10.8%);
+    height: 1px;
+    background: linear-gradient(54deg, rgba(213, 83, 111, 1) 0%, rgba(94, 0, 202, 1) 100%);
+    background-size: 150% 150%;
+    animation: gradient 3s ease infinite;
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 60%;
+        }
+    
+        50% {
+            background-position: 80% 10%;
+        }
+    
+        100% {
+            background-position: 20% 100%;
+        }
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -9px;
+        width: 26px;
+        height: 26px;
+        transform: translateY(-50%);
+        background-color: #a536893f;
+        border-radius: 50%;
+        animation: flash 6s infinite;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -3px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background-color: #a53689;
+        transform: translateY(-50%);
+    }
+}
+
+//? Навигация по слайдеру
+
+.action-elipse-next, .action-elipse-prev {
+    @include fdrjc_aic;
+    @include col();
+    @include size(1);
+    position: relative;
+    width: 106px;
+    min-width: 106px;
+    height: 106px;
+    min-height: 106px;
+    color: #31383e;
+    background-color: #181d21;
+    border-radius: 50%;
+    font-family: $ff_PNr;
+    font-size: 40px;
+    transform: rotate(90deg);
+    transition: transform 0.8s linear;
+
+    &:after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 0;
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px rgba(240, 228, 228, 0.1);
+        opacity: 0;
+        -webkit-transform: scale(0.9);
+        -moz-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+    
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: transform 0.3s linear;
+        
+        &:after {
+            content: "";
+            animation: sonarEffect 1.3s ease-out 75ms;
+        }
+    }
+
+    @keyframes sonarEffect {
+        0% {
+            opacity: 0.3;
+        }
+        40% {
+            opacity: 0.5;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 5px 5px #9e49ff, 0 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        100% {
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 5px 5px #d25bf0, 0 0 0 5px rgba(255, 255, 255, 0.5);
+            transform: scale(1.2);
+            opacity: 0;
+        }
+    }
+}
+
+//? Мелкая линия
+
+.short-line {
+    position: absolute;
+    left: calc(100% - 106px);
+    width: 52px;
+    height: 1px;
+    background-color: #a853ec;
+}
+
+//? Заголовок под первым слайдом
+
+.header-title {
+    font-family: $ff_PDr;
+    font-size: 1.75rem;
+    color: #48555d;
+    text-align: center;
+    letter-spacing: 48px;
+    text-transform: uppercase;
+    margin-bottom: 80px;
+}
+
+//? Круг второй слайд
+
+.circle-parent {
+    @include fdrjc_aic;
+    @include col();
+    @include size(5);
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(54deg, rgba(213, 83, 111, 1) 0%, rgba(94, 0, 202, 1) 100%);
+    border-radius: 50%;
+    margin: 0 40px;
+    
+    & > button {
+        @include fdrjc_aic;
+        position: absolute;
+        width: 156px;
+        height: 156px;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        font-size: 64px;
+        background: linear-gradient(24deg, rgba(213, 83, 111, 1) 0%, rgba(94, 0, 202, 1) 100%);
+        color: $white;
+        transition: all 0.5s ease;
+
+        &.animate {
+            transform: scale(1.1);
+            box-shadow: 0 1px 3px 0 rgba(50, 50, 50, 0.75);
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+    }
+
+    & :nth-child(1) {
+        top: 5%;
+        left: -15%;
+    }
+
+    & :nth-child(2) {
+        top: -15%;
+        left: 50%;
+        transform: translateX(-50%);
+
+        &.animate {
+            transform: translateX(-50%) scale(1.1);
+        }
+    }
+
+    & :nth-child(3) {
+        top: 5%;
+        right: -15%;
+    }
+
+    & :nth-child(4) {
+        bottom: 5%;
+        left: -15%;
+    }
+
+    & :nth-child(5) {
+        bottom: -15%;
+        left: 50%;
+        transform: translateX(-50%);
+
+        &.animate {
+            transform: translateX(-50%) scale(1.1);
+        }
+    }
+
+    & :nth-child(6) {
+        right: -15%;
+        bottom: 5%;
+    }
+
+    & :nth-child(7) {
+        top: 50%;
+        left: 50%;
+        animation: fadeIn 1s ease;
+        font-size: 120px;
+        color: #66FFFF;
+        background: none;
+
+        &.animate {
+            pointer-events: none;
+            transform: none;
+            transition: none;
+        }
+    }
+}
+
+//? Текст второго слайда
+
+.descr-block {
+    display: none;
+    @include col();
+    @include size(5);
+    font-family: $ff_PNl;
+    align-self: flex-start;
+    color: $white;
+    margin: 0 auto;
+
+    & h3 {
+        margin-bottom: 50px;
+        font-size: 36px;
+    }
+
+    & p {
+        font-size: 24px;
+    }
+
+    &.active {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+//? Кнопки круга
+
+.circle-btn {
+
+    &.active {
+        & > i {
+            transform: scale(1.3);
+            color: #66FFFF;
+        }
+    }
+}
