@@ -1,0 +1,92 @@
+//? Меню
+
+.header-nav {
+    @include fdrjsb_aic;
+    padding: 20px 15px;
+    transition: padding-top 0.3s linear, padding-bottom 0.3s linear;
+    background: linear-gradient(90deg, rgba(18, 22, 25, 1) 0%, rgba(18, 22, 25, 1) 50%, rgba(18, 22, 25, 1) 100%);
+        
+    &.on-scroll {
+        position: fixed;
+        z-index: 98;
+        top: 0;
+        right: 0;
+        left: 0;
+        padding: 30px 15px;
+        transition: padding-top 0.3s linear;
+        animation: fadeIn 0.3s linear;
+        background: linear-gradient(90deg, rgba(18, 22, 25, 1) 0%, rgba(18, 22, 25, 1) 50%, rgba(18, 22, 25, 1) 100%);
+    }
+
+    &__left {
+        @include fdr;
+        margin-left: 10px;
+    }
+
+    &__right {
+        @include fdr;
+        margin-right: 100px;
+    }
+}
+
+.header-logo {
+    margin: 0 10px;
+    padding: 0 5px;
+}
+
+.phone {
+    @include fdrjc_aic;
+    color: $navlink_col;
+    margin-left: 30px;
+    padding-left: 10px;
+
+    & > a {
+        display: inline-flex;
+        align-items: center;
+
+        & > span {
+            font-family: $ff_PNl;
+            font-size: 1.125rem;
+            text-transform: uppercase;
+            margin-left: 16px;
+            padding-bottom: 2px;
+        }
+    }
+}
+
+.phone-icon {
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    background: url("../../../img/svg/phone-icon.svg") no-repeat center;
+    background-size: contain;
+}
+
+.main-nav {
+    font-family: $ff_MPr;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 400;
+    color: $navlink_col;
+
+    &__list {
+        @include fdr;
+    }
+
+    &__list-item {
+        &:first-child {
+            margin-right: 35px;
+        }
+    
+        &:not(:first-child) {
+            margin: 0 35px;
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+	.header-nav__right {
+		display: none;
+	}
+}
