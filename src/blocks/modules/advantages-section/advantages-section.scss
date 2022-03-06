@@ -49,21 +49,35 @@
 		@include pinkBtn;
 	}
 
-	&__bottom-block {}
+	&__bottom-block {
+		margin-top: 125px;
+	}
 
-	&__slider {}
-
-	&__slider-slide {}
+	&__slider-slide {
+		// padding: 40px 15px 40px 15px;
+	}
 }
 
-.btn {}
+.slide {
+	@include fdcjs_ais;
+	background: transparent;
+	border-radius: 10px;
+	transition: background 0.3s linear;
 
-.pink-btn {}
+	&__title {
+		font-size: 3rem;
+		color: $white;
+		margin: 35px 0;
+	}
 
-.swiper {}
+	&__text {
+		font-size: 1.45rem;
+		color: $white;
+	}
 
-.swiper-wrapper {}
-
-.swiper-slide {}
-
-.custom-pagination {}
+	&:hover {
+		cursor: pointer;
+		background: $magenta_grt;
+		transition: background 0.3s linear;
+	}
+}
