@@ -1,4 +1,5 @@
 // Импорт всех JS файлов из BEM модулей
+import "%modules%/preloader/preloader";
 import "%modules%/sitebg/sitebg";
 import "%modules%/mobile-menu/mobile-menu";
 import "%modules%/header/header";

@@ -403,6 +403,32 @@ function clearStyle() {
 
 /***/ }),
 
+/***/ "./src/blocks/modules/preloader/preloader.js":
+/*!***************************************************!*\
+  !*** ./src/blocks/modules/preloader/preloader.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {/* ======== Preloader ======== */
+$(window).on('load', function () {
+  var preloaderDelay = 2000,
+      preloaderFadeOutTime = 300;
+  var loadingAnimation = $('.animation-container'),
+      preloader = $('#loader');
+
+  function hidePreloader() {
+    loadingAnimation.fadeOut(4000);
+    preloader.delay(preloaderDelay).fadeOut(preloaderFadeOutTime);
+    $('#pagecontent').show();
+  }
+
+  hidePreloader();
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
 /***/ "./src/blocks/modules/promo/promo.js":
 /*!*******************************************!*\
   !*** ./src/blocks/modules/promo/promo.js ***!
@@ -587,21 +613,24 @@ function hoverHandler(e) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_sitebg_sitebg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! %modules%/sitebg/sitebg */ "./src/blocks/modules/sitebg/sitebg.js");
-/* harmony import */ var _modules_sitebg_sitebg__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_modules_sitebg_sitebg__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _modules_mobile_menu_mobile_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! %modules%/mobile-menu/mobile-menu */ "./src/blocks/modules/mobile-menu/mobile-menu.js");
-/* harmony import */ var _modules_mobile_menu_mobile_menu__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_modules_mobile_menu_mobile_menu__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _modules_header_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! %modules%/header/header */ "./src/blocks/modules/header/header.js");
-/* harmony import */ var _modules_header_header__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_modules_header_header__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _modules_sidebar_sidebar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! %modules%/sidebar/sidebar */ "./src/blocks/modules/sidebar/sidebar.js");
-/* harmony import */ var _modules_sidebar_sidebar__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_modules_sidebar_sidebar__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _modules_promo_promo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! %modules%/promo/promo */ "./src/blocks/modules/promo/promo.js");
-/* harmony import */ var _modules_promo_promo__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_modules_promo_promo__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _modules_sliders_sliders__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! %modules%/sliders/sliders */ "./src/blocks/modules/sliders/sliders.js");
-/* harmony import */ var _modules_sliders_sliders__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_modules_sliders_sliders__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _modules_footer_footer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! %modules%/footer/footer */ "./src/blocks/modules/footer/footer.js");
-/* harmony import */ var _modules_footer_footer__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_modules_footer_footer__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _modules_preloader_preloader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! %modules%/preloader/preloader */ "./src/blocks/modules/preloader/preloader.js");
+/* harmony import */ var _modules_preloader_preloader__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_modules_preloader_preloader__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _modules_sitebg_sitebg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! %modules%/sitebg/sitebg */ "./src/blocks/modules/sitebg/sitebg.js");
+/* harmony import */ var _modules_sitebg_sitebg__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_modules_sitebg_sitebg__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _modules_mobile_menu_mobile_menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! %modules%/mobile-menu/mobile-menu */ "./src/blocks/modules/mobile-menu/mobile-menu.js");
+/* harmony import */ var _modules_mobile_menu_mobile_menu__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_modules_mobile_menu_mobile_menu__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _modules_header_header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! %modules%/header/header */ "./src/blocks/modules/header/header.js");
+/* harmony import */ var _modules_header_header__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_modules_header_header__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _modules_sidebar_sidebar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! %modules%/sidebar/sidebar */ "./src/blocks/modules/sidebar/sidebar.js");
+/* harmony import */ var _modules_sidebar_sidebar__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_modules_sidebar_sidebar__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _modules_promo_promo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! %modules%/promo/promo */ "./src/blocks/modules/promo/promo.js");
+/* harmony import */ var _modules_promo_promo__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_modules_promo_promo__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _modules_sliders_sliders__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! %modules%/sliders/sliders */ "./src/blocks/modules/sliders/sliders.js");
+/* harmony import */ var _modules_sliders_sliders__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_modules_sliders_sliders__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _modules_footer_footer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! %modules%/footer/footer */ "./src/blocks/modules/footer/footer.js");
+/* harmony import */ var _modules_footer_footer__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_modules_footer_footer__WEBPACK_IMPORTED_MODULE_7__);
 // Импорт всех JS файлов из BEM модулей
+
 
 
 
