@@ -155,6 +155,29 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/blocks/modules/advantages-section/advantages-section.js":
+/*!*********************************************************************!*\
+  !*** ./src/blocks/modules/advantages-section/advantages-section.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var swiper = new Swiper('.advantages__slider', {
+  // Optional parameters
+  direction: 'horizontal',
+  grabCursor: false,
+  slidesPerView: 3,
+  speed: 1050,
+  // loop: true,
+  // autoplay: true,
+  // If we need pagination
+  pagination: {
+    el: '.custom-pagination'
+  }
+});
+
+/***/ }),
+
 /***/ "./src/blocks/modules/footer/footer.js":
 /*!*********************************************!*\
   !*** ./src/blocks/modules/footer/footer.js ***!
@@ -613,9 +636,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_promo_promo__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_modules_promo_promo__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _modules_sliders_sliders__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! %modules%/sliders/sliders */ "./src/blocks/modules/sliders/sliders.js");
 /* harmony import */ var _modules_sliders_sliders__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_modules_sliders_sliders__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _modules_footer_footer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! %modules%/footer/footer */ "./src/blocks/modules/footer/footer.js");
-/* harmony import */ var _modules_footer_footer__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_modules_footer_footer__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _modules_advantages_section_advantages_section__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! %modules%/advantages-section/advantages-section */ "./src/blocks/modules/advantages-section/advantages-section.js");
+/* harmony import */ var _modules_advantages_section_advantages_section__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_modules_advantages_section_advantages_section__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _modules_footer_footer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! %modules%/footer/footer */ "./src/blocks/modules/footer/footer.js");
+/* harmony import */ var _modules_footer_footer__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_modules_footer_footer__WEBPACK_IMPORTED_MODULE_8__);
 // Импорт всех JS файлов из BEM модулей
+
 
 
 

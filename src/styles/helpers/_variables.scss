@@ -1,13 +1,19 @@
 // Base colors
 
 $white: #ffffff;
+$magenta: #ac378e;
 
 // $body-bg: 
 
+// Gradients
+
+$magenta_grt: linear-gradient(54deg, rgba(213, 83, 111, 1) 0%, rgba(94, 0, 202, 1) 100%);
+$magenta_grtHov: linear-gradient(54deg, rgba(94, 0, 202, 1) 0%, rgba(213, 83, 111, 1) 100%);
 // Font Size
 
 $base_fz: 1rem;
-$base_ff: 'Playfair Display Regular', sans-serif;
+$base_ff: 'Playfair Display Regular',
+sans-serif;
 $base_hover: #a53689;
 
 // Text color
@@ -19,6 +25,29 @@ $navlink_col: #6b7175;
 $sidebar-width: 100px;
 
 // Btns
+
+@mixin pinkBtn {
+	& a {
+		width: 100%;
+		max-width: 260px;
+		padding: 20px 75px;
+		background: $magenta_grt;
+		text-align: center;
+		text-transform: uppercase;
+		color: $white;
+		font-family: $ff_PNeb;
+		border-radius: 5px;
+		transform: scale(1);
+		transition: transform 0.3s linear;
+		letter-spacing: 2px;
+
+		&:hover {
+			cursor: pointer;
+			transform: scale(1.01);
+			transition: transform 0.3s linear;
+		}
+	}
+}
 
 // $blue-btn: #267df4;
 // $green-btn: #6fc754;
@@ -39,13 +68,20 @@ $sidebar-width: 100px;
 
 // Fonts
 
-$ff_MPr: 'Myriad Pro Regular', sans-serif;
-$ff_Db: 'DublonC Bold', sans-serif;
-$ff_PDb: 'Playfair Display Bold', sans-serif;
-$ff_PDr: 'Playfair Display Regular', sans-serif;
-$ff_PNl: 'Proxima Nova Lt', sans-serif;
-$ff_PNeb: 'Proxima Nova ExtraBold', sans-serif;
-$ff_PNr: 'Proxima Nova Regular', sans-serif;
+$ff_MPr: 'Myriad Pro Regular',
+sans-serif;
+$ff_Db: 'DublonC Bold',
+sans-serif;
+$ff_PDb: 'Playfair Display Bold',
+sans-serif;
+$ff_PDr: 'Playfair Display Regular',
+sans-serif;
+$ff_PNl: 'Proxima Nova Lt',
+sans-serif;
+$ff_PNeb: 'Proxima Nova ExtraBold',
+sans-serif;
+$ff_PNr: 'Proxima Nova Regular',
+sans-serif;
 
 // Animations
 
@@ -53,6 +89,7 @@ $ff_PNr: 'Proxima Nova Regular', sans-serif;
 	0% {
 		opacity: 0;
 	}
+
 	100% {
 		opacity: 1;
 	}

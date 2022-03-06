@@ -1,35 +1,94 @@
 .promo {
-    &__content {
-        @include col();
-        @include size(11);
-        @include fdcjc_aic;
-        margin: 0 auto;
-    }
+	&__content {
+		@include col();
+		@include size(11);
+		@include fdcjc_aic;
+		margin: 0 auto;
+	}
 }
 
-.promo-btn {
-    display: inline-block;
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    background: linear-gradient(54deg, rgba(213, 83, 111, 1) 0%, rgba(94, 0, 202, 1) 100%);
-    margin: 165px auto 100px auto;
-    & > i {
-        color: $white;
-    }
+@keyframes changeBg {
+
+	0%,
+	100% {
+		background: url("../../../img/play-btn-background.jpg") no-repeat 65% 35%;
+	}
+
+	25% {
+		background: url("../../../img/play-btn-background.jpg") no-repeat 45% 55%;
+	}
+
+	50% {
+		background: url("../../../img/play-btn-background.jpg") no-repeat 15% 65%;
+	}
+
+	75% {
+		background: url("../../../img/play-btn-background.jpg") no-repeat 15% 25%;
+	}
 }
-    
+
+// @keyframes heartbeat {
+// 	0% {
+// 		transform: scale(.75);
+// 	}
+
+// 	20% {
+// 		transform: scale(1);
+// 	}
+
+// 	40% {
+// 		transform: scale(.75);
+// 	}
+
+// 	60% {
+// 		transform: scale(1);
+// 	}
+
+// 	80% {
+// 		transform: scale(.75);
+// 	}
+
+// 	100% {
+// 		transform: scale(.75);
+// 	}
+// }
+
+.promo-btn {
+	position: relative;
+	@include fdrjc_aic;
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+	// background: linear-gradient(54deg, rgba(213, 83, 111, 1) 0%, rgba(94, 0, 202, 1) 100%);
+	background: url('../../../img/play-btn-background.jpg') no-repeat 65% 35%;
+	margin: 165px auto 100px auto;
+	transform: scale(1);
+	transition: transform 0.3s linear;
+	animation: changeBg 15s infinite;
+	z-index: 5;
+
+	& img {
+		margin-left: 15px;
+	}
+
+	&:hover {
+		cursor: pointer;
+		transform: scale(1.05);
+		transition: transform 0.5s linear;
+	}
+}
+
 .title {
-    font-family: $ff_PDr;
-    color: $white;
-    text-align: center;
-    font-size: 70px;
+	font-family: $ff_PDr;
+	color: $white;
+	text-align: center;
+	font-size: 70px;
 }
 
 .assign-decor {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 55px;
-    margin-bottom: 80px;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin-top: 55px;
+	margin-bottom: 80px;
 }
