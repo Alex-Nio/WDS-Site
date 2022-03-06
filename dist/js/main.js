@@ -244,6 +244,7 @@ function () {
       throttle = false;
     }, FPS);
     CB();
+    console.log(CB);
   };
 }(); // use case:
 
@@ -262,19 +263,8 @@ function onScroll() {
   }
 }
 
-function setContentHeight() {
-  var y = window.pageYOffset;
-
-  if (y > 0) {
-    content.style.cssText = "margin-top: ".concat(navHeight, "px;");
-  } else if (y == 0) {
-    content.style.cssText = "margin-top: 0px; transition: margin-top 0.3s linear";
-  }
-}
-
 window.onscroll = function () {
   requestFrame(onScroll);
-  requestFrame(setContentHeight);
 }; // -----------------------------------------------
 // ---------------HEADER SLIDER-------------------
 // -----------------------------------------------
@@ -408,24 +398,20 @@ function clearStyle() {
   !*** ./src/blocks/modules/preloader/preloader.js ***!
   \***************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-/* WEBPACK VAR INJECTION */(function($) {/* ======== Preloader ======== */
-$(window).on('load', function () {
-  var preloaderDelay = 2000,
-      preloaderFadeOutTime = 300;
-  var loadingAnimation = $('.animation-container'),
-      preloader = $('#loader');
-
-  function hidePreloader() {
-    loadingAnimation.fadeOut(4000);
-    preloader.delay(preloaderDelay).fadeOut(preloaderFadeOutTime);
-    $('#pagecontent').show();
-  }
-
-  hidePreloader();
-});
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
+// $(window).on('load', function () {
+// 	var preloaderDelay = 2000,
+// 		preloaderFadeOutTime = 300;
+// 	var loadingAnimation = $('.animation-container'),
+// 		preloader = $('#loader');
+// 	function hidePreloader() {
+// 		loadingAnimation.fadeOut(4000);
+// 		preloader.delay(preloaderDelay).fadeOut(preloaderFadeOutTime);
+// 		$('#pagecontent').show();
+// 	}
+// 	hidePreloader();
+// });
 
 /***/ }),
 

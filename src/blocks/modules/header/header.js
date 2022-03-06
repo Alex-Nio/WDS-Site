@@ -73,11 +73,11 @@ var requestFrame = window.requestAnimationFrame ||
 			throttle = true;
 			setTimeout(function () { throttle = false }, FPS);
 			CB();
+			console.log(CB);
 		}
 	})();
 
 // use case:
-
 function onScroll() {
 	window.addEventListener("scroll", callbackFunc);
 	function callbackFunc() {
@@ -91,18 +91,8 @@ function onScroll() {
 	}
 }
 
-function setContentHeight() {
-	let y = window.pageYOffset;
-	if (y > 0) {
-		content.style.cssText = `margin-top: ${navHeight}px;`;
-	} else if (y == 0) {
-		content.style.cssText = `margin-top: 0px; transition: margin-top 0.3s linear`;
-	}
-}
-
 window.onscroll = function () {
 	requestFrame(onScroll);
-	requestFrame(setContentHeight);
 };
 
 // -----------------------------------------------
@@ -139,7 +129,6 @@ const swiper = new Swiper('.header-slider', {
 // -----------------------------------------------
 // -----------CIRCLE MAGIC ROTATION---------------
 // -----------------------------------------------
-
 
 let circleBtns = document.querySelectorAll('.circle-btn'),
 	circleParent = document.querySelector('.circle-parent'),

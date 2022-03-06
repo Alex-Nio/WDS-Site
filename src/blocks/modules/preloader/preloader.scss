@@ -5,15 +5,15 @@
 	width: 100vw;
 	min-height: 100vh;
 
-	// &::before {
-	// 	position: absolute;
-	// 	content: '';
-	// 	top: 0;
-	// 	left: 0;
-	// 	right: 0;
-	// 	bottom: 0;
-	// 	background: linear-gradient(to bottom right, #080808 0%, #9867ac 50%, #080808 100%);
-	// }
+	&::before {
+		position: absolute;
+		content: '';
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: linear-gradient(to bottom right, #080808 0%, #080808 100%);
+	}
 }
 
 @keyframes rotating {
