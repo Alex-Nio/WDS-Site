@@ -155,22 +155,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/blocks/modules/burger-menu/burger-menu.js":
-/*!*******************************************************!*\
-  !*** ./src/blocks/modules/burger-menu/burger-menu.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var burgerBtn = document.querySelector('.burger-nav__btn'),
-    mobileMenuBg = document.querySelector('.mobile-menu__bg');
-burgerBtn.addEventListener('click', function () {
-  burgerBtn.classList.toggle('open-menu');
-  mobileMenuBg.classList.toggle('absolute-bg');
-});
-
-/***/ }),
-
 /***/ "./src/blocks/modules/footer/footer.js":
 /*!*********************************************!*\
   !*** ./src/blocks/modules/footer/footer.js ***!
@@ -216,11 +200,53 @@ $(function () {
 }); // -----------------------------------------------
 // -----------HEADER NAV SCROLL-------------------
 // -----------------------------------------------
+// Blocks
 
-var header = document.querySelector(".header"),
-    nav = document.querySelector(".header-nav"),
-    sidebarContent = document.querySelector(".social-bar__list"),
-    hHeight;
+var header = document.querySelector('.header'),
+    content = document.querySelector('.header__content'),
+    nav = header.querySelector('.header-nav'),
+    burgerBtn = document.querySelector('.header-nav__trigger'),
+    mobileMenu = document.querySelector('.mobile-menu'),
+    mobileMenuLi = mobileMenu.querySelectorAll('.mobile-menu__item'); // Triggers
+
+var scrollTriger = 'on-scroll',
+    activeTrigger = 'active',
+    menuOpenTrigger = 'open-menu',
+    showTrigger = 'show',
+    // Params
+navHeight = nav.offsetHeight;
+burgerBtn.addEventListener('click', function () {
+  burgerBtn.classList.toggle(menuOpenTrigger);
+  mobileMenu.classList.toggle(activeTrigger); // Если меню отображено, показываем пункты меню
+
+  if (mobileMenu.classList.contains(activeTrigger)) {
+    mobileMenuLi.forEach(function (li) {
+      li.classList.add(showTrigger);
+    });
+  } else {
+    mobileMenuLi.forEach(function (li) {
+      li.classList.remove(showTrigger);
+    });
+  }
+}); // -----------------------------------------------
+// ------------------REQ FRAMES-------------------
+// -----------------------------------------------
+
+var requestFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || // polyfill - throttle fall-back for unsupported browsers
+function () {
+  var throttle = false,
+      FPS = 1000 / 60; // 60fps (in ms)
+
+  return function (CB) {
+    if (throttle) return;
+    throttle = true;
+    setTimeout(function () {
+      throttle = false;
+    }, FPS);
+    CB();
+  };
+}(); // use case:
+
 
 function onScroll() {
   window.addEventListener("scroll", callbackFunc);
@@ -229,25 +255,26 @@ function onScroll() {
     var y = window.pageYOffset;
 
     if (y > 0) {
-      // sidebarContent.style.cssText = `
-      // animation: fadeIn 0.8s linear;
-      // margin-top: 13px;
-      // transition: margin-top 0.8s linear;
-      // `;
-      nav.classList.add("on-scroll");
-      header.style.cssText = "\n      margin-top: 40px;\n      transition: margin-top 0.1s linear";
+      nav.classList.add(scrollTriger);
     } else {
-      nav.classList.remove("on-scroll");
-      header.style.cssText = "\n      margin-top: 0px;"; // sidebarContent.style.cssText = `
-      // margin-top: 35px;
-      // transition: margin-top 0.8s linear;
-      // `;
+      nav.classList.remove(scrollTriger);
     }
   }
 }
 
-window.onload = function () {
-  onScroll();
+function setContentHeight() {
+  var y = window.pageYOffset;
+
+  if (y > 0) {
+    content.style.cssText = "margin-top: ".concat(navHeight, "px;");
+  } else if (y == 0) {
+    content.style.cssText = "margin-top: 0px; transition: margin-top 0.3s linear";
+  }
+}
+
+window.onscroll = function () {
+  requestFrame(onScroll);
+  requestFrame(setContentHeight);
 }; // -----------------------------------------------
 // ---------------HEADER SLIDER-------------------
 // -----------------------------------------------
@@ -297,6 +324,7 @@ function setActiveBtn(i) {
 
 function setActiveDescr(i) {
   descrps[i].classList.add('active');
+  descrps[i].style.cssText = "animation: fadeIn 0.3s linear";
 }
 
 function hideTabContent() {
@@ -349,6 +377,29 @@ function clearStyle() {
   circleParent.removeAttribute("style");
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "./src/blocks/modules/mobile-menu/mobile-menu.js":
+/*!*******************************************************!*\
+  !*** ./src/blocks/modules/mobile-menu/mobile-menu.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+//? z-index's:
+//* header default: 12
+//* header scroll: 50
+//* desctop parent: 11
+//* desctop-nav: 10
+//* mobile parent: 9
+//* mobile-nav: 8
+//* mobile-menu: 5
+//* burger btn(trigger): 12
+// 1. Нажимаем на триггер
+// 2. Показываем меню
+// 3. Присваиваем в отступ меню высоту шляпы
+// 1.
 
 /***/ }),
 
@@ -538,8 +589,8 @@ function hoverHandler(e) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_sitebg_sitebg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! %modules%/sitebg/sitebg */ "./src/blocks/modules/sitebg/sitebg.js");
 /* harmony import */ var _modules_sitebg_sitebg__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_modules_sitebg_sitebg__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _modules_burger_menu_burger_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! %modules%/burger-menu/burger-menu */ "./src/blocks/modules/burger-menu/burger-menu.js");
-/* harmony import */ var _modules_burger_menu_burger_menu__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_modules_burger_menu_burger_menu__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _modules_mobile_menu_mobile_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! %modules%/mobile-menu/mobile-menu */ "./src/blocks/modules/mobile-menu/mobile-menu.js");
+/* harmony import */ var _modules_mobile_menu_mobile_menu__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_modules_mobile_menu_mobile_menu__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _modules_header_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! %modules%/header/header */ "./src/blocks/modules/header/header.js");
 /* harmony import */ var _modules_header_header__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_modules_header_header__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _modules_sidebar_sidebar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! %modules%/sidebar/sidebar */ "./src/blocks/modules/sidebar/sidebar.js");

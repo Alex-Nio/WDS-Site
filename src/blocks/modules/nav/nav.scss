@@ -1,91 +1,216 @@
+//? z-index's:
+//* header default: 12
+//* header scroll: 50
+//* desctop parent: 11
+//* desctop-nav: 10
+//* mobile parent: 9
+//* mobile-nav: 8
+//* mobile-menu: 5
+//* burger btn(trigger): 12
+
+//? hide = 1024 
+//* Desctop
+//? show = 1024
+//* Mobile
+
 //? Меню
 
+//! NEW
+
 .header-nav {
-    @include fdrjsb_aic;
-    padding: 20px 15px;
-    transition: padding-top 0.3s linear, padding-bottom 0.3s linear;
-    background: linear-gradient(90deg, rgba(18, 22, 25, 1) 0%, rgba(18, 22, 25, 1) 50%, rgba(18, 22, 25, 1) 100%);
-        
-    &.on-scroll {
-        position: fixed;
-        z-index: 98;
-        top: 0;
-        right: 0;
-        left: 0;
-        padding: 30px 15px;
-        transition: padding-top 0.3s linear;
-        animation: fadeIn 0.3s linear;
-        background: linear-gradient(90deg, rgba(18, 22, 25, 1) 0%, rgba(18, 22, 25, 1) 50%, rgba(18, 22, 25, 1) 100%);
-    }
+	position: relative;
+	width: 100%;
+	z-index: 12;
 
-    &__left {
-        @include fdr;
-        margin-left: 10px;
-    }
+	//? Header scroll styles
+	&.on-scroll {
+		position: fixed;
+		z-index: 50;
+		top: 0;
+		right: 0;
+		left: 0;
+		background: linear-gradient(90deg, rgba(18, 22, 25, 1) 0%, rgba(18, 22, 25, 1) 50%, rgba(18, 22, 25, 1) 100%);
 
-    &__right {
-        @include fdr;
-        margin-right: 100px;
-    }
+		& .header-nav__desctop {
+			padding: 15px 15px;
+			transition: padding-top 0.3s linear, padding-bottom 0.3s linear;
+		}
+
+		& .header-nav__mobile .mobile-nav {
+			padding: 15px 15px;
+			transition: padding-top 0.3s linear, padding-bottom 0.3s linear;
+		}
+	}
+
+	& .header-nav__mobile .mobile-nav {
+		transition: padding-top 0.3s linear, padding-bottom 0.3s linear;
+	}
+
+	//? Desctop parent
+	&__desctop {
+		@include fdrjsb_aic;
+		padding: 30px 15px;
+		transition: padding-top 0.3s linear, padding-bottom 0.3s linear;
+		background: linear-gradient(90deg, rgba(18, 22, 25, 1) 0%, rgba(18, 22, 25, 1) 50%, rgba(18, 22, 25, 1) 100%);
+		z-index: 11;
+	}
+
+	&__left {
+		@include fdr;
+		margin-left: 10px;
+	}
+
+	&__right {
+		@include fdr;
+		margin-right: 100px;
+	}
+
+	//? Mobile parent
+	&__mobile {
+		display: none;
+		z-index: 9;
+	}
+
+	//? Burger btn
+	&__trigger {
+		width: 60px;
+		height: 45px;
+		margin-right: 50px;
+		position: relative;
+		transform: rotate(0deg) scale(0.9);
+		transition: .5s ease-in-out;
+		z-index: 12;
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		& span {
+			display: block;
+			position: absolute;
+			height: 9px;
+			width: 100%;
+			background: linear-gradient(54deg, rgba(213, 83, 111, 1) 0%, rgba(94, 0, 202, 1) 100%);
+			border-radius: 9px;
+			opacity: 1;
+			left: 0;
+			transform: rotate(0deg);
+			transition: .25s ease-in-out;
+
+			&:nth-child(2) {
+				top: 0px;
+			}
+
+			&:nth-child(1),
+			:nth-child(4) {
+				top: 18px;
+			}
+
+			&:nth-child(3) {
+				top: 36px;
+			}
+		}
+
+		&.open-menu {
+			transform: rotate(105deg) scale(0.8);
+			transition: transform 0.5s linear;
+
+			& span {
+				&:nth-child(1) {
+					top: 18px;
+					width: 0%;
+					left: 50%;
+				}
+
+				&:nth-child(2) {
+					transform: rotate(45deg);
+				}
+
+				&:nth-child(3) {
+					transform: rotate(-45deg);
+				}
+
+				&:nth-child(4) {
+					top: 18px;
+					width: 0%;
+					left: 50%;
+				}
+			}
+		}
+	}
 }
 
+//? Elements
 .header-logo {
-    margin: 0 10px;
-    padding: 0 5px;
+	margin: 0 10px;
+	padding: 0 5px;
 }
 
 .phone {
-    @include fdrjc_aic;
-    color: $navlink_col;
-    margin-left: 30px;
-    padding-left: 10px;
+	@include fdrjc_aic;
+	color: $navlink_col;
+	margin-left: 30px;
+	padding-left: 10px;
 
-    & > a {
-        display: inline-flex;
-        align-items: center;
+	&>a {
+		display: inline-flex;
+		align-items: center;
 
-        & > span {
-            font-family: $ff_PNl;
-            font-size: 1.125rem;
-            text-transform: uppercase;
-            margin-left: 16px;
-            padding-bottom: 2px;
-        }
-    }
+		&>span {
+			font-family: $ff_PNl;
+			font-size: 1.125rem;
+			text-transform: uppercase;
+			margin-left: 16px;
+			padding-bottom: 2px;
+		}
+	}
 }
 
 .phone-icon {
-    display: inline-block;
-    width: 23px;
-    height: 23px;
-    background: url("../../../img/svg/phone-icon.svg") no-repeat center;
-    background-size: contain;
+	display: inline-block;
+	width: 23px;
+	height: 23px;
+	background: url("../../../img/svg/phone-icon.svg") no-repeat center;
+	background-size: contain;
 }
 
+//? Desctop Main navigation
 .main-nav {
-    font-family: $ff_MPr;
-    font-size: 1.125rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 400;
-    color: $navlink_col;
+	font-family: $ff_MPr;
+	font-size: 1.125rem;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 400;
+	color: $navlink_col;
 
-    &__list {
-        @include fdr;
-    }
+	&__list {
+		@include fdr;
+	}
 
-    &__list-item {
-        &:first-child {
-            margin-right: 35px;
-        }
-    
-        &:not(:first-child) {
-            margin: 0 35px;
-        }
-    }
+	&__list-item {
+		&:first-child {
+			margin-right: 35px;
+		}
+
+		&:not(:first-child) {
+			margin: 0 35px;
+		}
+	}
+}
+
+//? Mobile actions
+.mobile-nav {
+	width: 100%;
+	@include fdrjsb_aic;
+	padding: 40px 15px;
+	background: linear-gradient(90deg, rgba(18, 22, 25, 1) 0%, rgba(18, 22, 25, 1) 50%, rgba(18, 22, 25, 1) 100%);
 }
 
 @media screen and (max-width: 1024px) {
+	.header-nav__desctop {
+		display: none;
+	}
+
 	.header-nav__right {
 		display: none;
 	}

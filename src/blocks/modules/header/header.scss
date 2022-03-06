@@ -4,6 +4,7 @@
 
 .header {
     overflow: hidden;
+	position: relative;
 }
 
 //? Слайдер
@@ -14,8 +15,7 @@
     &__content {
         @include fdrjc_aic;
         position: relative;
-        
-        margin-top: 180px;
+        margin-top: 78px;
         margin-bottom: 85px;
         animation: fadeIn 1s linear;
     

@@ -46,3 +46,14 @@ $ff_PDr: 'Playfair Display Regular', sans-serif;
 $ff_PNl: 'Proxima Nova Lt', sans-serif;
 $ff_PNeb: 'Proxima Nova ExtraBold', sans-serif;
 $ff_PNr: 'Proxima Nova Regular', sans-serif;
+
+// Animations
+
+@keyframes showFadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
