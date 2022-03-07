@@ -3,6 +3,26 @@
 }
 
 .advantages {
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+		background: url('../../../img/bottom-bg.jpg');
+		opacity: 0.3;
+	}
+
+	&__slider {
+		position: relative;
+
+		& .swiper-wrapper {
+			padding-bottom: 50px;
+		}
+	}
 
 	&__top-block {
 		text-align: center;
@@ -19,7 +39,7 @@
 
 	&__title {
 		font-family: $ff_PDr;
-		font-size: 7rem;
+		font-size: 70px;
 		margin-bottom: 45px;
 	}
 
@@ -50,11 +70,15 @@
 	}
 
 	&__bottom-block {
+		@include fdrjc_aic;
 		margin-top: 125px;
 	}
 
 	&__slider-slide {
-		// padding: 40px 15px 40px 15px;
+		width: 100%;
+		min-height: 378px;
+		max-width: 511px;
+		padding: 30px 30px 55px 50px;
 	}
 }
 
@@ -65,13 +89,13 @@
 	transition: background 0.3s linear;
 
 	&__title {
-		font-size: 3rem;
+		font-size: 2rem;
 		color: $white;
 		margin: 35px 0;
 	}
 
 	&__text {
-		font-size: 1.45rem;
+		font-size: 1.4rem;
 		color: $white;
 	}
 
