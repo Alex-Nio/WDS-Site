@@ -84,72 +84,58 @@ function hoverHandler(e) {
 	}
 }
 
-// Slide checking and rotating
+// Slide checking and rotating by scroll tracking
+let block,
+	block_show = null;
 
-// Получаем нужный элемент
-var element = document.querySelector('.block');
-let block;
+function scrollTracking() {
+	let wt = $(window).scrollTop();
+	let wh = $(window).height();
+	let et = $('.block').offset().top;
+	let eh = $('.block').outerHeight();
 
-var Visible = function (target) {
-	// Все позиции элемента
-	var targetPosition = {
-		top: window.pageYOffset + target.getBoundingClientRect().top,
-		left: window.pageXOffset + target.getBoundingClientRect().left,
-		right: window.pageXOffset + target.getBoundingClientRect().right,
-		bottom: window.pageYOffset + target.getBoundingClientRect().bottom
-	},
-		// Получаем позиции окна
-		windowPosition = {
-			top: window.pageYOffset,
-			left: window.pageXOffset,
-			right: window.pageXOffset + document.documentElement.clientWidth,
-			bottom: window.pageYOffset + document.documentElement.clientHeight
-		};
-
-	if (targetPosition.bottom > windowPosition.top && // Если позиция нижней части элемента больше позиции верхней чайти окна, то элемент виден сверху
-		targetPosition.top < windowPosition.bottom && // Если позиция верхней части элемента меньше позиции нижней чайти окна, то элемент виден снизу
-		targetPosition.right > windowPosition.left && // Если позиция правой стороны элемента больше позиции левой части окна, то элемент виден слева
-		targetPosition.left < windowPosition.right) { // Если позиция левой стороны элемента меньше позиции правой чайти окна, то элемент виден справа
-		// Если элемент полностью видно, то запускаем следующий код
-		console.clear();
-		console.log('Вы видите элемент :)');
-
-		rotateToBackSide('.square-flip');
-
+	if (wt + wh >= et && wt + wh - eh * 2 <= et + (wh - eh)) {
+		if (block_show == null || block_show == false) {
+			// console.log('Блок active в области видимости');
+			rotateToBackSide('.square-flip');
+		}
+		block_show = true;
 	} else {
-		// Если элемент не видно, то запускаем этот код
-		console.clear();
-	};
+		if (block_show == null || block_show == true) {
+			// console.log('Блок active скрыт');
+		}
+		block_show = false;
+	}
+}
 
-	// 1. Step
-	function rotateToBackSide(selector) {
-		block = document.querySelectorAll(selector);
+// 1. Step
+function rotateToBackSide(selector) {
+	block = document.querySelectorAll(selector);
 
+
+	setTimeout(function () {
+		block.forEach(el => {
+			el.classList.add('active');
+		});
 
 		setTimeout(function () {
-			block.forEach(el => {
-				el.classList.add('active');
-			});
-
-			setTimeout(function () {
-				rotateToDefault(block);
-			}, 2000);
-
+			rotateToDefault(block);
 		}, 2000);
-	}
 
-	// 2. Step
-	function rotateToDefault(selector) {
-		selector.forEach(element => {
-			element.classList.remove('active');
-		});
-	}
-};
+	}, 2000);
+}
 
-// Запускаем функцию при прокрутке страницы
-window.addEventListener('scroll', function () {
-	Visible(element);
+// 2. Step
+function rotateToDefault(selector) {
+	selector.forEach(element => {
+		element.classList.remove('active');
+	});
+}
+
+$(window).scroll(function () {
+	scrollTracking();
 });
 
-// А также запустим функцию сразу. А то вдруг, элемент изначально видно
-Visible(element);
+$(document).ready(function () {
+	scrollTracking();
+});
