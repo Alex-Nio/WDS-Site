@@ -182,6 +182,7 @@
 }
 
 body {
+	backface-visibility: hidden;
 	-webkit-backface-visibility: hidden;
 }
 
@@ -277,6 +278,7 @@ body {
 }
 
 .animated.flipInX {
+	animation-name: flipInX;
 	-webkit-backface-visibility: visible !important;
 	-webkit-animation-name: flipInX;
 	-moz-backface-visibility: visible !important;

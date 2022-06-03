@@ -1,14 +1,13 @@
 $(function () {
-
-	var duration = 500;
-	var slides = $(".slider .block").length;
-	var i = 1;
+	let duration = 500;
+	let slides = $(".slider .block").length;
+	let i = 1;
 
 	// Slide the images
 
 	function slide() {
 		if (i <= slides) {
-			var imagelocation = ".slider .block:nth-child(" + i + ") img";
+			let imagelocation = ".slider .block:nth-child(" + i + ") img";
 
 			$(imagelocation).siblings().removeClass("active animated flipInX");
 			$(imagelocation).addClass("active animated flipInX");
@@ -23,7 +22,6 @@ $(function () {
 	}
 
 	// Autoplay
-
 	timer = setInterval(function () {
 		i++;
 
@@ -35,18 +33,16 @@ $(function () {
 });
 
 jQuery(document).ready(function ($) {
-
 	//Count nr. of square classes
-	var countSquare = $('.front-to-right').length;
-	var countSquare2 = $('.front-to-left').length;
+	let countSquare = $('.front-to-right').length,
+		countSquare2 = $('.front-to-left').length;
 
 	//For each Square found add BG image
 	for (i = 0; i < countSquare; i++) {
-		var firstImage1 = $('.front-to-right').eq([i]);
-		var secondImage1 = $('.back-to-left').eq([i]);
-
-		var getImage = firstImage1.attr('data-image');
-		var getImage2 = secondImage1.attr('data-image');
+		let firstImage1 = $('.front-to-right').eq([i]),
+			secondImage1 = $('.back-to-left').eq([i]),
+			getImage = firstImage1.attr('data-image'),
+			getImage2 = secondImage1.attr('data-image');
 
 		firstImage1.css('background-image', 'url(' + getImage + ')');
 		secondImage1.css('background-image', 'url(' + getImage2 + ')');
@@ -54,10 +50,11 @@ jQuery(document).ready(function ($) {
 
 	for (i = 0; i < countSquare2; i++) {
 
-		var firstImage2 = $('.front-to-left').eq([i]);
-		var secondImage2 = $('.back-to-right').eq([i]);
-		var getImage = firstImage2.attr('data-image');
-		var getImage2 = secondImage2.attr('data-image');
+		let firstImage2 = $('.front-to-left').eq([i]);
+		secondImage2 = $('.back-to-right').eq([i]),
+			getImage = firstImage2.attr('data-image'),
+			getImage2 = secondImage2.attr('data-image');
+
 		firstImage2.css('background-image', 'url(' + getImage + ')');
 		secondImage2.css('background-image', 'url(' + getImage2 + ')');
 	}
@@ -67,13 +64,13 @@ jQuery(document).ready(function ($) {
 let cards = document.querySelectorAll('.square-flip');
 
 
-for (var i = 0; i < cards.length; i++) {
+for (let i = 0; i < cards.length; i++) {
 	cards[i].addEventListener('mouseenter', hoverHandler, false);
 	cards[i].addEventListener('mouseleave', hoverHandler, false);
 }
 
 function hoverHandler(e) {
-	for (var i = 0; i < cards.length; i++) {
+	for (let i = 0; i < cards.length; i++) {
 		const elem = cards[i];
 
 		if (e.type == "mouseenter") {
@@ -90,9 +87,9 @@ let block,
 
 function scrollTracking() {
 	let wt = $(window).scrollTop();
-	let wh = $(window).height();
-	let et = $('.block').offset().top;
-	let eh = $('.block').outerHeight();
+	wh = $(window).height(),
+		et = $('.block').offset().top,
+		eh = $('.block').outerHeight();
 
 	if (wt + wh >= et && wt + wh - eh * 2 <= et + (wh - eh)) {
 		if (block_show == null || block_show == false) {

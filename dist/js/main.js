@@ -513,37 +513,37 @@ function clearStyle() {
 });
 jQuery(document).ready(function ($) {
   //Count nr. of square classes
-  var countSquare = $('.front-to-right').length;
-  var countSquare2 = $('.front-to-left').length; //For each Square found add BG image
+  var countSquare = $('.front-to-right').length,
+      countSquare2 = $('.front-to-left').length; //For each Square found add BG image
 
   for (i = 0; i < countSquare; i++) {
-    var firstImage1 = $('.front-to-right').eq([i]);
-    var secondImage1 = $('.back-to-left').eq([i]);
-    var getImage = firstImage1.attr('data-image');
-    var getImage2 = secondImage1.attr('data-image');
-    firstImage1.css('background-image', 'url(' + getImage + ')');
-    secondImage1.css('background-image', 'url(' + getImage2 + ')');
+    var firstImage1 = $('.front-to-right').eq([i]),
+        secondImage1 = $('.back-to-left').eq([i]),
+        _getImage = firstImage1.attr('data-image'),
+        _getImage2 = secondImage1.attr('data-image');
+
+    firstImage1.css('background-image', 'url(' + _getImage + ')');
+    secondImage1.css('background-image', 'url(' + _getImage2 + ')');
   }
 
   for (i = 0; i < countSquare2; i++) {
     var firstImage2 = $('.front-to-left').eq([i]);
-    var secondImage2 = $('.back-to-right').eq([i]);
-    var getImage = firstImage2.attr('data-image');
-    var getImage2 = secondImage2.attr('data-image');
+    secondImage2 = $('.back-to-right').eq([i]), getImage = firstImage2.attr('data-image'), getImage2 = secondImage2.attr('data-image');
     firstImage2.css('background-image', 'url(' + getImage + ')');
     secondImage2.css('background-image', 'url(' + getImage2 + ')');
   }
 });
 var cards = document.querySelectorAll('.square-flip');
 
-for (var i = 0; i < cards.length; i++) {
-  cards[i].addEventListener('mouseenter', hoverHandler, false);
-  cards[i].addEventListener('mouseleave', hoverHandler, false);
+for (var _i = 0; _i < cards.length; _i++) {
+  cards[_i].addEventListener('mouseenter', hoverHandler, false);
+
+  cards[_i].addEventListener('mouseleave', hoverHandler, false);
 }
 
 function hoverHandler(e) {
-  for (var i = 0; i < cards.length; i++) {
-    var elem = cards[i];
+  for (var _i2 = 0; _i2 < cards.length; _i2++) {
+    var elem = cards[_i2];
 
     if (e.type == "mouseenter") {
       elem.classList.add("active");
@@ -559,9 +559,7 @@ var block,
 
 function scrollTracking() {
   var wt = $(window).scrollTop();
-  var wh = $(window).height();
-  var et = $('.block').offset().top;
-  var eh = $('.block').outerHeight();
+  wh = $(window).height(), et = $('.block').offset().top, eh = $('.block').outerHeight();
 
   if (wt + wh >= et && wt + wh - eh * 2 <= et + (wh - eh)) {
     if (block_show == null || block_show == false) {
