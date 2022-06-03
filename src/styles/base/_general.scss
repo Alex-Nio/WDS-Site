@@ -24,12 +24,26 @@
 }
 
 body {
+	position: relative;
 	font-family: $base_ff;
 	font-size: $base_fz;
 	line-height: 1.5;
 	background: rgb(18, 22, 25);
 	background: linear-gradient(90deg, rgba(18, 22, 25, 1) 0%, rgba(18, 22, 25, 1) 50%, rgba(18, 22, 25, 1) 100%);
 	overflow-x: hidden;
+}
+
+body:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: url('../../img/body_bg.png');
+	background-repeat: no-repeat;
+	background-size: 100% 110%;
+	background-attachment: scroll; //! под вопросом 
 }
 
 img {

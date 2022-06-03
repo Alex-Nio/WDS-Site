@@ -1,107 +1,98 @@
 .advantages-section {
-	position: relative;
+    position: relative;
 }
 
 .advantages {
-	position: relative;
+    position: relative;
 
-	&::after {
-		content: '';
-		position: absolute;
-		top: 0;
-		right: 0;
-		left: 0;
-		bottom: 0;
-		background: url('../../../img/bottom-bg.jpg');
-		opacity: 0.3;
-	}
+    &__slider {
+        position: relative;
 
-	&__slider {
-		position: relative;
+        & .swiper-wrapper {
+            padding-bottom: 50px;
+        }
+    }
 
-		& .swiper-wrapper {
-			padding-bottom: 50px;
-		}
-	}
+    &__top-block {
+        text-align: center;
+        color: $white;
+    }
 
-	&__top-block {
-		text-align: center;
-		color: $white;
-	}
+    &__text {
+        font-family: $ff_MPr;
+        font-size: 1.4rem;
+        color: $magenta;
+        letter-spacing: 6px;
+        margin-bottom: 15px;
+    }
 
-	&__text {
-		font-family: $ff_PDb;
-		font-size: 1.4rem;
-		color: $magenta;
-		letter-spacing: 6px;
-		margin-bottom: 15px;
-	}
+    &__title {
+        font-family: $ff_PDr;
+        font-size: 70px;
+        margin-bottom: 45px;
+    }
 
-	&__title {
-		font-family: $ff_PDr;
-		font-size: 70px;
-		margin-bottom: 45px;
-	}
+    &__list {
+        @include fdrjc_aic;
+    }
 
-	&__list {
-		@include fdrjc_aic;
-	}
+    &__list-item {
+        position: relative;
+        font-family: $ff_PDb;
+        text-transform: uppercase;
+        margin: 0 15px;
+        letter-spacing: 6px;
 
-	&__list-item {
-		position: relative;
-		font-family: $ff_PDb;
-		text-transform: uppercase;
-		margin: 0 15px;
-		letter-spacing: 6px;
+        &:not(:first-child):before {
+            content: "/";
+            position: absolute;
+            top: 50%;
+            left: -15px;
+            transform: translateY(-50%);
+        }
+    }
 
-		&:not(:first-child):before {
-			content: '/';
-			position: absolute;
-			left: -15px;
-			top: 50%;
-			transform: translateY(-50%);
-		}
-	}
+    &__actions {
+        @include fdrjc_aic;
+        @include pinkBtn;
+        margin-top: 65px;
+    }
 
-	&__actions {
-		@include fdrjc_aic;
-		margin-top: 65px;
-		@include pinkBtn;
-	}
+    &__bottom-block {
+        @include fdrjc_aic;
+        margin-top: 125px;
+    }
 
-	&__bottom-block {
-		@include fdrjc_aic;
-		margin-top: 125px;
-	}
-
-	&__slider-slide {
-		width: 100%;
-		min-height: 378px;
-		max-width: 511px;
-		padding: 30px 30px 55px 50px;
-	}
+    &__slider-slide {
+        width: 100%;
+        max-width: 511px;
+        min-height: 378px;
+        padding: 30px 30px 55px 50px;
+    }
 }
 
 .slide {
-	@include fdcjs_ais;
-	background: transparent;
-	border-radius: 10px;
-	transition: background 0.3s linear;
+    @include fdcjs_ais;
+    background: transparent;
+    border-radius: 10px;
+    transition: background 0.3s linear;
 
-	&__title {
-		font-size: 2rem;
-		color: $white;
-		margin: 35px 0;
-	}
+    &:hover {
+        cursor: pointer;
+        background: $magenta_grt;
+        transition: background 0.3s linear;
+    }
 
-	&__text {
-		font-size: 1.4rem;
-		color: $white;
-	}
+    &__title {
+        font-family: $ff_MPb;
+        font-size: 2rem;
+        color: $white;
+        margin: 35px 0;
+    }
 
-	&:hover {
-		cursor: pointer;
-		background: $magenta_grt;
-		transition: background 0.3s linear;
-	}
+    &__text {
+        font-family: $ff_MPr;
+        font-size: 1.4rem;
+        color: $white;
+    }
 }
