@@ -17,5 +17,13 @@ const swiper = new Swiper('.advantages__slider', {
 			slidesPerView: 1,
 			spaceBetween: 20
 		},
+		920: {
+			slidesPerView: 2,
+			spaceBetween: 20
+		},
+		1279: {
+			slidesPerView: 3,
+			spaceBetween: 20
+		},
 	}
 });

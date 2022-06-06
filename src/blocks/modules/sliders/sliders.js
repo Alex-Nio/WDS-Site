@@ -61,26 +61,6 @@ jQuery(document).ready(function ($) {
 });
 
 
-let cards = document.querySelectorAll('.square-flip');
-
-
-for (let i = 0; i < cards.length; i++) {
-	cards[i].addEventListener('mouseenter', hoverHandler, false);
-	cards[i].addEventListener('mouseleave', hoverHandler, false);
-}
-
-function hoverHandler(e) {
-	for (let i = 0; i < cards.length; i++) {
-		const elem = cards[i];
-
-		if (e.type == "mouseenter") {
-			elem.classList.add("active");
-		} else {
-			elem.classList.remove("active");
-		}
-	}
-}
-
 // Slide checking and rotating by scroll tracking
 let block,
 	block_show = null;
@@ -94,7 +74,7 @@ function scrollTracking() {
 	if (wt + wh >= et && wt + wh - eh * 2 <= et + (wh - eh)) {
 		if (block_show == null || block_show == false) {
 			// console.log('Блок active в области видимости');
-			rotateToBackSide('.square-flip');
+			// rotateToBackSide('.square-flip');
 		}
 		block_show = true;
 	} else {
@@ -109,17 +89,22 @@ function scrollTracking() {
 function rotateToBackSide(selector) {
 	block = document.querySelectorAll(selector);
 
+	block.forEach(slide => {
+		if (slide.classList.contains('.active')) {
+			rotateToDefault(block)
+		} else {
+			setTimeout(function () {
+				block.forEach(el => {
+					el.classList.add('active');
+				});
 
-	setTimeout(function () {
-		block.forEach(el => {
-			el.classList.add('active');
-		});
+				setTimeout(function () {
+					rotateToDefault(block);
+				}, 2000);
 
-		setTimeout(function () {
-			rotateToDefault(block);
-		}, 2000);
-
-	}, 2000);
+			}, 2000);
+		}
+	});
 }
 
 // 2. Step
@@ -127,6 +112,8 @@ function rotateToDefault(selector) {
 	selector.forEach(element => {
 		element.classList.remove('active');
 	});
+
+	rotateToBackSide('.square-flip');
 }
 
 $(window).scroll(function () {

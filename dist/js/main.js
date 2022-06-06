@@ -180,6 +180,14 @@ var swiper = new Swiper('.advantages__slider', {
     320: {
       slidesPerView: 1,
       spaceBetween: 20
+    },
+    920: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    },
+    1279: {
+      slidesPerView: 3,
+      spaceBetween: 20
     }
   }
 });
@@ -539,27 +547,7 @@ jQuery(document).ready(function ($) {
     firstImage2.css('background-image', 'url(' + getImage + ')');
     secondImage2.css('background-image', 'url(' + getImage2 + ')');
   }
-});
-var cards = document.querySelectorAll('.square-flip');
-
-for (var _i = 0; _i < cards.length; _i++) {
-  cards[_i].addEventListener('mouseenter', hoverHandler, false);
-
-  cards[_i].addEventListener('mouseleave', hoverHandler, false);
-}
-
-function hoverHandler(e) {
-  for (var _i2 = 0; _i2 < cards.length; _i2++) {
-    var elem = cards[_i2];
-
-    if (e.type == "mouseenter") {
-      elem.classList.add("active");
-    } else {
-      elem.classList.remove("active");
-    }
-  }
-} // Slide checking and rotating by scroll tracking
-
+}); // Slide checking and rotating by scroll tracking
 
 var block,
     block_show = null;
@@ -569,9 +557,8 @@ function scrollTracking() {
   wh = $(window).height(), et = $('.block').offset().top, eh = $('.block').outerHeight();
 
   if (wt + wh >= et && wt + wh - eh * 2 <= et + (wh - eh)) {
-    if (block_show == null || block_show == false) {
-      // console.log('Блок active в области видимости');
-      rotateToBackSide('.square-flip');
+    if (block_show == null || block_show == false) {// console.log('Блок active в области видимости');
+      // rotateToBackSide('.square-flip');
     }
 
     block_show = true;
@@ -586,14 +573,20 @@ function scrollTracking() {
 
 function rotateToBackSide(selector) {
   block = document.querySelectorAll(selector);
-  setTimeout(function () {
-    block.forEach(function (el) {
-      el.classList.add('active');
-    });
-    setTimeout(function () {
+  block.forEach(function (slide) {
+    if (slide.classList.contains('.active')) {
       rotateToDefault(block);
-    }, 2000);
-  }, 2000);
+    } else {
+      setTimeout(function () {
+        block.forEach(function (el) {
+          el.classList.add('active');
+        });
+        setTimeout(function () {
+          rotateToDefault(block);
+        }, 2000);
+      }, 2000);
+    }
+  });
 } // 2. Step
 
 
@@ -601,6 +594,7 @@ function rotateToDefault(selector) {
   selector.forEach(function (element) {
     element.classList.remove('active');
   });
+  rotateToBackSide('.square-flip');
 }
 
 $(window).scroll(function () {

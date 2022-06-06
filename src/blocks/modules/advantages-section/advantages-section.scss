@@ -82,19 +82,20 @@
 
 .slide {
 	@include fdcjs_ais;
-	background: transparent;
-	border-radius: 10px;
-	transition: background 0.3s linear;
-
-	&:hover {
-		cursor: pointer;
-		background: $magenta_grt;
-		transition: background 0.3s linear;
-	}
 
 	&__wrapper {
 		@include fdcjs_ais;
-		padding: 40px 20px 55px 60px;
+		padding: 40px 60px 55px 60px;
+		background: transparent;
+		border-radius: 10px;
+		transition: background 0.3s linear;
+		margin: 0 auto;
+
+		&:hover {
+			cursor: pointer;
+			background: $magenta_grt;
+			transition: background 0.3s linear;
+		}
 	}
 
 	&__title {
