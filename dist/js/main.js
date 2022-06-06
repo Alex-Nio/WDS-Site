@@ -174,6 +174,13 @@ var swiper = new Swiper('.advantages__slider', {
   // If we need pagination
   pagination: {
     el: '.custom-pagination'
+  },
+  breakpoints: {
+    // when window width is >= 320px
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 20
+    }
   }
 });
 

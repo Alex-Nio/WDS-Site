@@ -18,12 +18,23 @@
 		@include col();
 		@include size(12);
 		height: 525px;
+
+		@media screen and (max-width: 920px) {
+			@include fdc;
+			margin: 0;
+		}
 	}
 
 	&__top-description,
 	&__bottom-description {
 		@include col();
 		@include size(5);
+
+		@media screen and (max-width: 920px) {
+			@include fdcjc_aic;
+			margin: 0;
+			width: 100%;
+		}
 	}
 }
 
@@ -47,7 +58,7 @@
 	@include size(11);
 	font-family: $ff_PDr;
 	font-size: 44px;
-	line-height: 70px;
+	line-height: calc(16px + 54 * (100vw / 1920));
 	color: $white;
 	margin: 0;
 }
@@ -97,7 +108,7 @@
 
 		& .active {
 			display: block;
-			z-index: 100;
+			z-index: 30;
 		}
 
 		&>img:first-child {

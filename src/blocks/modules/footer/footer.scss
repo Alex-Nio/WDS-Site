@@ -2,11 +2,12 @@
 
 .footer {
 	margin-top: 245px;
+	margin-bottom: 212px;
 
 	&__title {
 		position: relative;
 		font-family: $ff_PDr;
-		font-size: 4.375rem;
+		font-size: calc(16px + 54 * (100vw / 1920));
 		text-align: center;
 		color: $white;
 		padding: 0 40px;
@@ -29,20 +30,48 @@
 	}
 
 	&__menu {
+		position: relative;
 		@include fdrjs_aic;
+		margin: 55px 0;
+
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			width: 100%;
+			max-width: 500px;
+			height: 1px;
+			background: linear-gradient(54deg, rgba(213, 83, 111, 1) 0%, rgba(94, 0, 202, 1) 100%);
+			background-size: 150% 150%;
+			animation: gradient 3s ease infinite;
+		}
+
+		&::before {
+			left: calc(-100% - 115px);
+		}
+
+		&::after {
+			right: calc(-100% - 115px);
+			transform: scale(-1, 1);
+		}
 
 		&-item {
 			position: relative;
+			text-transform: uppercase;
+			font-family: $ff_PDb;
+			font-size: 0.95rem;
+			letter-spacing: 4px;
 
 			&:nth-child(1) {
 				margin-right: 30px;
 			}
 
-			&:nth-child(2) {
+			&:nth-child(3) {
 				margin: 0 30px;
 			}
 
-			&:nth-child(3) {
+			&:nth-child(5) {
 				margin-left: 30px;
 			}
 		}
@@ -50,5 +79,40 @@
 		&-link {
 			color: $white;
 		}
+	}
+}
+
+.socials {
+	@include fdrjc_aic;
+
+	&__item {}
+
+	&__link {}
+}
+
+.vk {
+	display: block;
+	width: 40px;
+	height: 40px;
+	background: url('../../../img/svg/vk-icon.svg') no-repeat center;
+	background-size: 100% 100%;
+}
+
+
+.separator {
+	color: $white;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 60%;
+	}
+
+	50% {
+		background-position: 80% 10%;
+	}
+
+	100% {
+		background-position: 20% 100%;
 	}
 }

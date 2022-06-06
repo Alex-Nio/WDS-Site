@@ -28,12 +28,16 @@
 
 	&__title {
 		font-family: $ff_PDr;
-		font-size: 70px;
+		font-size: calc(16px + 54 * (100vw / 1920));
 		margin-bottom: 45px;
 	}
 
 	&__list {
 		@include fdrjc_aic;
+
+		@media screen and (max-width: 920px) {
+			@include fdc;
+		}
 	}
 
 	&__list-item {
@@ -49,6 +53,10 @@
 			top: 50%;
 			left: -15px;
 			transform: translateY(-50%);
+
+			@media screen and (max-width: 920px) {
+				display: none;
+			}
 		}
 	}
 

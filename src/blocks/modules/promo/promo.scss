@@ -82,7 +82,7 @@
 	font-family: $ff_PDr;
 	color: $white;
 	text-align: center;
-	font-size: 70px;
+	font-size: calc(16px + 54 * (100vw / 1920));
 }
 
 .assign-decor {
