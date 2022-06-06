@@ -12,12 +12,20 @@
 .header-slider {
 	width: 100%;
 
+	&__wrapper {
+		align-items: center;
+	}
+
 	&__content {
 		@include fdrjc_aic;
 		position: relative;
 		margin-top: 78px;
 		margin-bottom: 85px;
 		animation: fadeIn 1s linear;
+
+		@media screen and (max-width: 1420px) {
+			@include fdcjc_aic;
+		}
 
 		& :first-child {
 			&>a {
@@ -133,9 +141,19 @@
 	transform: translateY(-50%) rotate(-90deg) scale(1);
 	transition: all 0.5s linear;
 
+	@media screen and (max-width: 1420px) {
+		top: calc(100% + 35px);
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
 	&:hover {
 		transform: translateY(-50%) rotate(-90deg) scale(1.2);
 		transition: transform 0.5s linear;
+
+		@media screen and (max-width: 1420px) {
+			transform: translateX(-50%) scale(1.2);
+		}
 	}
 }
 
@@ -148,6 +166,11 @@
 	left: calc(100% - 80px);
 	transform: translateY(-50%) rotate(90deg) scale(1);
 	transition: all 0.5s linear;
+
+	@media screen and (max-width: 1420px) {
+		display: none;
+	}
+
 
 	&:hover {
 		transform: translateY(-50%) rotate(90deg) scale(1.2);
@@ -180,6 +203,10 @@
 		100% {
 			background-position: 20% 100%;
 		}
+	}
+
+	@media screen and (max-width: 1420px) {
+		display: none;
 	}
 
 	&:before {
@@ -227,6 +254,10 @@
 	font-size: 40px;
 	transform: rotate(90deg);
 	transition: transform 0.8s linear;
+
+	@media screen and (max-width: 1420px) {
+		display: none;
+	}
 
 	&:after {
 		content: "";
@@ -283,6 +314,10 @@
 	width: 52px;
 	height: 1px;
 	background-color: #a853ec;
+
+	@media screen and (max-width: 1420px) {
+		display: none;
+	}
 }
 
 //? Заголовок под первым слайдом
@@ -295,6 +330,11 @@
 	letter-spacing: 48px;
 	text-transform: uppercase;
 	margin-bottom: 80px;
+
+	@media screen and (max-width: 1420px) {
+		letter-spacing: 16px;
+		margin-bottom: 25px;
+	}
 }
 
 //? Круг второй слайд
