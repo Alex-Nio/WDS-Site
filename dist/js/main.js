@@ -215,6 +215,7 @@ var swiper = new Swiper('.advantages__slider', {
 /* WEBPACK VAR INJECTION */(function($) {// -----------------------------------------------
 // -------------SVG FILL SCRIPT-------------------
 // -----------------------------------------------
+
 $(function () {
   $('img.img-svg').each(function () {
     var $img = $(this);
@@ -222,42 +223,41 @@ $(function () {
     var imgURL = $img.attr('src');
     $.get(imgURL, function (data) {
       var $svg = $(data).find('svg');
-
       if (typeof imgClass !== 'undefined') {
         $svg = $svg.attr('class', imgClass + ' replaced-svg');
       }
-
       $svg = $svg.removeAttr('xmlns:a');
-
       if (!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
         $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'));
       }
-
       $img.replaceWith($svg);
     }, 'xml');
   });
-}); // -----------------------------------------------
+});
+
+// -----------------------------------------------
 // -----------HEADER NAV SCROLL-------------------
 // -----------------------------------------------
+
 // Blocks
-
 var header = document.querySelector('.header'),
-    content = document.querySelector('.header__content'),
-    nav = header.querySelector('.header-nav'),
-    burgerBtn = document.querySelector('.header-nav__trigger'),
-    mobileMenu = document.querySelector('.mobile-menu'),
-    mobileMenuLi = mobileMenu.querySelectorAll('.mobile-menu__item'); // Triggers
-
+  content = document.querySelector('.header__content'),
+  nav = header.querySelector('.header-nav'),
+  burgerBtn = document.querySelector('.header-nav__trigger'),
+  mobileMenu = document.querySelector('.mobile-menu'),
+  mobileMenuLi = mobileMenu.querySelectorAll('.mobile-menu__item');
+// Triggers
 var scrollTriger = 'on-scroll',
-    activeTrigger = 'active',
-    menuOpenTrigger = 'open-menu',
-    showTrigger = 'show',
-    // Params
-navHeight = nav.offsetHeight;
+  activeTrigger = 'active',
+  menuOpenTrigger = 'open-menu',
+  showTrigger = 'show',
+  // Params
+  navHeight = nav.offsetHeight;
 burgerBtn.addEventListener('click', function () {
   burgerBtn.classList.toggle(menuOpenTrigger);
-  mobileMenu.classList.toggle(activeTrigger); // Если меню отображено, показываем пункты меню
+  mobileMenu.classList.toggle(activeTrigger);
 
+  // Если меню отображено, показываем пункты меню
   if (mobileMenu.classList.contains(activeTrigger)) {
     mobileMenuLi.forEach(function (li) {
       li.classList.add(showTrigger);
@@ -267,14 +267,17 @@ burgerBtn.addEventListener('click', function () {
       li.classList.remove(showTrigger);
     });
   }
-}); // -----------------------------------------------
+});
+
+// -----------------------------------------------
 // ------------------REQ FRAMES-------------------
 // -----------------------------------------------
 
-var requestFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || // polyfill - throttle fall-back for unsupported browsers
+var requestFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
+// polyfill - throttle fall-back for unsupported browsers
 function () {
   var throttle = false,
-      FPS = 1000 / 60; // 60fps (in ms)
+    FPS = 1000 / 60; // 60fps (in ms)
 
   return function (CB) {
     if (throttle) return;
@@ -285,15 +288,13 @@ function () {
     CB();
     console.log(CB);
   };
-}(); // use case:
+}();
 
-
+// use case:
 function onScroll() {
   window.addEventListener("scroll", callbackFunc);
-
   function callbackFunc() {
     var y = window.pageYOffset;
-
     if (y > 0) {
       nav.classList.add(scrollTriger);
     } else {
@@ -301,13 +302,13 @@ function onScroll() {
     }
   }
 }
-
 window.onscroll = function () {
   requestFrame(onScroll);
-}; // -----------------------------------------------
+};
+
+// -----------------------------------------------
 // ---------------HEADER SLIDER-------------------
 // -----------------------------------------------
-
 
 var swiper = new Swiper('.header-slider', {
   // Optional parameters
@@ -333,29 +334,28 @@ var swiper = new Swiper('.header-slider', {
     nextEl: '.action-elipse-next',
     prevEl: '.action-elipse-prev'
   }
-}); // -----------------------------------------------
+});
+
+// -----------------------------------------------
 // -----------CIRCLE MAGIC ROTATION---------------
 // -----------------------------------------------
 
 var circleBtns = document.querySelectorAll('.circle-btn'),
-    circleParent = document.querySelector('.circle-parent'),
-    descrps = document.querySelectorAll('.descr-block');
+  circleParent = document.querySelector('.circle-parent'),
+  descrps = document.querySelectorAll('.descr-block');
 circleBtns.forEach(function (btn, i) {
   btn.addEventListener('click', function (e) {
     hideTabContent();
     setActiveDescr(i);
   });
 });
-
 function setActiveBtn(i) {
   circleBtns[i].classList.add('active');
 }
-
 function setActiveDescr(i) {
   descrps[i].classList.add('active');
   descrps[i].style.cssText = "animation: fadeIn 0.3s linear";
 }
-
 function hideTabContent() {
   descrps.forEach(function (descr) {
     descr.classList.remove('active');
@@ -364,44 +364,44 @@ function hideTabContent() {
     btn.classList.remove('active');
   });
 }
-
 circleParent.addEventListener('click', function (e) {
   activeClassReset();
   var target = e.target;
   targetSetActiveClass(target);
   setActiveIcon(target);
-}); // Анимация родительского круга
+});
 
+// Анимация родительского круга
 function setCircleAnimation() {
   circleParent.style.cssText = "\n    transform: rotate(360deg);\n    transition-duration: 1s;\n  ";
   setTimeout(clearStyle, 900);
-} // Сброс активной кнопки
+}
 
-
+// Сброс активной кнопки
 function activeClassReset() {
   circleBtns.forEach(function (btn) {
     btn.classList.remove('active');
   });
-} // Вешаем активный класс на кнопку
+}
 
-
+// Вешаем активный класс на кнопку
 function targetSetActiveClass(target) {
   if (target.classList.contains('circle-btn')) {
     target.classList.add('active');
   } else if (target.parentNode.className == 'circle-btn') {
     target.parentNode.classList.add('active');
   }
-} // Выводим новую центральную иконку
+}
 
-
+// Выводим новую центральную иконку
 function setActiveIcon(target) {
   var activeBtn = document.querySelector('.circle-btn.active'),
-      activeBtnIcon = activeBtn.querySelector('i').classList.value,
-      parentCenteredIcon = circleParent.querySelector("[data-element]");
+    activeBtnIcon = activeBtn.querySelector('i').classList.value,
+    parentCenteredIcon = circleParent.querySelector("[data-element]");
   parentCenteredIcon.classList.value = activeBtnIcon;
-} // Очищаем атрибут стилей
+}
 
-
+// Очищаем атрибут стилей
 function clearStyle() {
   circleParent.removeAttribute("style");
 }
@@ -425,6 +425,7 @@ function clearStyle() {
 //* mobile-nav: 8
 //* mobile-menu: 5
 //* burger btn(trigger): 12
+
 // 1. Нажимаем на триггер
 // 2. Показываем меню
 // 3. Присваиваем в отступ меню высоту шляпы
@@ -442,13 +443,16 @@ function clearStyle() {
 // $(window).on('load', function () {
 // 	var preloaderDelay = 2000,
 // 		preloaderFadeOutTime = 300;
+
 // 	var loadingAnimation = $('.animation-container'),
 // 		preloader = $('#loader');
+
 // 	function hidePreloader() {
 // 		loadingAnimation.fadeOut(4000);
 // 		preloader.delay(preloaderDelay).fadeOut(preloaderFadeOutTime);
 // 		$('#pagecontent').show();
 // 	}
+
 // 	hidePreloader();
 // });
 
@@ -497,7 +501,9 @@ function clearStyle() {
 /* WEBPACK VAR INJECTION */(function($, jQuery) {$(function () {
   var duration = 500;
   var slides = $(".slider .block").length;
-  var i = 1; // Slide the images
+  var i = 1;
+
+  // Slide the images
 
   function slide() {
     if (i <= slides) {
@@ -505,72 +511,66 @@ function clearStyle() {
       $(imagelocation).siblings().removeClass("active animated flipInX");
       $(imagelocation).addClass("active animated flipInX");
     }
-
     if (i == 0) {
       i = slides;
     }
-
     if (i < 0) {
       i = 0;
     }
-  } // Autoplay
+  }
 
-
+  // Autoplay
   timer = setInterval(function () {
     i++;
-
     if (i > slides) {
       i = 1;
     }
-
     slide();
   }, duration);
 });
 jQuery(document).ready(function ($) {
   //Count nr. of square classes
   var countSquare = $('.front-to-right').length,
-      countSquare2 = $('.front-to-left').length; //For each Square found add BG image
+    countSquare2 = $('.front-to-left').length;
 
+  //For each Square found add BG image
   for (i = 0; i < countSquare; i++) {
     var firstImage1 = $('.front-to-right').eq([i]),
-        secondImage1 = $('.back-to-left').eq([i]),
-        _getImage = firstImage1.attr('data-image'),
-        _getImage2 = secondImage1.attr('data-image');
-
+      secondImage1 = $('.back-to-left').eq([i]),
+      _getImage = firstImage1.attr('data-image'),
+      _getImage2 = secondImage1.attr('data-image');
     firstImage1.css('background-image', 'url(' + _getImage + ')');
     secondImage1.css('background-image', 'url(' + _getImage2 + ')');
   }
-
   for (i = 0; i < countSquare2; i++) {
     var firstImage2 = $('.front-to-left').eq([i]);
     secondImage2 = $('.back-to-right').eq([i]), getImage = firstImage2.attr('data-image'), getImage2 = secondImage2.attr('data-image');
     firstImage2.css('background-image', 'url(' + getImage + ')');
     secondImage2.css('background-image', 'url(' + getImage2 + ')');
   }
-}); // Slide checking and rotating by scroll tracking
+});
 
+// Slide checking and rotating by scroll tracking
 var block,
-    block_show = null;
-
+  block_show = null;
 function scrollTracking() {
   var wt = $(window).scrollTop();
   wh = $(window).height(), et = $('.block').offset().top, eh = $('.block').outerHeight();
-
   if (wt + wh >= et && wt + wh - eh * 2 <= et + (wh - eh)) {
-    if (block_show == null || block_show == false) {// console.log('Блок active в области видимости');
+    if (block_show == null || block_show == false) {
+      // console.log('Блок active в области видимости');
       // rotateToBackSide('.square-flip');
     }
-
     block_show = true;
   } else {
-    if (block_show == null || block_show == true) {// console.log('Блок active скрыт');
+    if (block_show == null || block_show == true) {
+      // console.log('Блок active скрыт');
     }
-
     block_show = false;
   }
-} // 1. Step
+}
 
-
+// 1. Step
 function rotateToBackSide(selector) {
   block = document.querySelectorAll(selector);
   block.forEach(function (slide) {
@@ -587,16 +587,15 @@ function rotateToBackSide(selector) {
       }, 2000);
     }
   });
-} // 2. Step
+}
 
-
+// 2. Step
 function rotateToDefault(selector) {
   selector.forEach(function (element) {
     element.classList.remove('active');
   });
   rotateToBackSide('.square-flip');
 }
-
 $(window).scroll(function () {
   scrollTracking();
 });
